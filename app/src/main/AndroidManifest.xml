@@ -21,7 +21,10 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />    
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- permissions related to images -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     
     <!-- our own permissions -->
     <uses-permission android:name="org.dieschnittstelle.mobile.android.permission.READ_DATAITEMS" />

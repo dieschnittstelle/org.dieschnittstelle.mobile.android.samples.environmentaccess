@@ -67,6 +67,7 @@ public class ContactDetailsViewActivity extends Activity {
 		entryName = (EditText) findViewById(R.id.entryName);
 		entryEmail = (EditText) findViewById(R.id.entryEmail);
 		entryPhone = (EditText) findViewById(R.id.entryPhone);
+		saveEntry = (MenuItem) findViewById(R.id.saveEntryAction);
 
 		// try to read out the contact
 		this.editContact = (Contact) getIntent()
@@ -93,7 +94,6 @@ public class ContactDetailsViewActivity extends Activity {
 			entryName.setEnabled(false);
 			entryEmail.setEnabled(false);
 			entryPhone.setEnabled(false);
-			saveEntry.setEnabled(false);
 		}
 
 	}
@@ -136,6 +136,9 @@ public class ContactDetailsViewActivity extends Activity {
 
 		// we extract the createItemAction
 		saveEntry = menu.findItem(R.id.saveEntryAction);
+		if (this.editMode) {
+			saveEntry.setEnabled(false);
+		}
 		
 		// return true for the menu to be shown
 		return true;

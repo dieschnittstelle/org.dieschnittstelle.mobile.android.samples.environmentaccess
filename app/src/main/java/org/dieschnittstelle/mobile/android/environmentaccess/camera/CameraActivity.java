@@ -29,11 +29,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import android.media.MediaScannerConnection;
+
+import android.media.MediaScannerConnection.OnScanCompletedListener;
+
 /**
  * note the difference to transfer images and videos to the album...
- * 
+ *
  * @author kreutel
- * 
+ *
  */
 @SuppressLint("NewApi")
 public class CameraActivity extends Activity {
@@ -141,73 +145,81 @@ public class CameraActivity extends Activity {
 				+ ", " + data);
 
 		switch (callActionId) {
-		case CALL_ACTION_CAPTURE_IMAGE:
-			switch (resultCode) {
-			case RESULT_OK:
-				Toast.makeText(this,
-						"Image capture successul. Adding to album...",
-						Toast.LENGTH_LONG).show();
-				// make the image available in the album...
-				Uri imageAlbumUri = saveImageInAlbum(mediaFileUri);
-				mediaView.setImageURI(imageAlbumUri);
+			case CALL_ACTION_CAPTURE_IMAGE:
+				switch (resultCode) {
+					case RESULT_OK:
+						Toast.makeText(this,
+								"Image capture successul. Adding to album...",
+								Toast.LENGTH_LONG).show();
+						// make the image available in the album...
+						Uri imageAlbumUri = saveImageInAlbum(mediaFileUri);
+						mediaView.setImageURI(imageAlbumUri);
+						break;
+					case RESULT_CANCELED:
+						Toast.makeText(this, "Image capture cancelled!",
+								Toast.LENGTH_LONG).show();
+						break;
+					default:
+						Toast.makeText(this, "Image capture failed!", Toast.LENGTH_LONG)
+								.show();
+				}
 				break;
-			case RESULT_CANCELED:
-				Toast.makeText(this, "Image capture cancelled!",
-						Toast.LENGTH_LONG).show();
-				break;
-			default:
-				Toast.makeText(this, "Image capture failed!", Toast.LENGTH_LONG)
-						.show();
-			}
-			break;
-		case CALL_ACTION_CAPTURE_VIDEO:
-			switch (resultCode) {
-			case RESULT_OK:
-				Toast.makeText(this,
-						"Video capture successul. Adding to album...",
-						Toast.LENGTH_LONG).show();
-				Uri videoAlbumUri = saveVideoInAlbum(mediaFileUri);
-
+			case CALL_ACTION_CAPTURE_VIDEO:
+				switch (resultCode) {
+					case RESULT_OK:
+						String path = "";
 				/*
 				 * create a thumbnail for the uri and set it on the image view
 				 */
+						if (false) {
+							Toast.makeText(this,
+									"Video capture successul. Adding to album...",
+									Toast.LENGTH_LONG).show();
+							Uri videoAlbumUri = saveVideoInAlbum(mediaFileUri);
 
-				// for thumbnail creation, we need the file path, rather than
-				// the content uri, which can be accessed as follows:
-				String[] proj = { MediaStore.Images.Media.DATA };
-				CursorLoader loader = new CursorLoader(this, videoAlbumUri,
-						proj, null, null, null);
-				Cursor cursor = loader.loadInBackground();
-				cursor.moveToFirst();
-				String path = cursor.getString(cursor
-						.getColumnIndex(MediaStore.Images.Media.DATA));
-				Log.d(logger, "determined file path for uri: " + path);
 
-				// now create the thumbnail using the utility class provided by
-				// android
-				Bitmap bmp = ThumbnailUtils.createVideoThumbnail(path,
-						Thumbnails.MINI_KIND);
-				Log.d(logger, "created thumbnail: " + bmp);
+							// for thumbnail creation, we need the file path, rather than
+							// the content uri, which can be accessed as follows:
 
-				// rotate the bitmap (see
-				// http://stackoverflow.com/questions/8608734/android-rotate-bitmap-90-degrees-results-in-squashed-image-need-a-true-rotate-b)
-				Matrix matrix = new Matrix();
-				matrix.postRotate(90);
-				Bitmap rotated = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(),
-						bmp.getHeight(), matrix, true);
+							// adding videos to storage does not work anymore...
+							String[] proj = {MediaStore.Images.Media.DATA};
+							CursorLoader loader = new CursorLoader(this, videoAlbumUri,
+									proj, null, null, null);
+							Cursor cursor = loader.loadInBackground();
+							cursor.moveToFirst();
+							path = cursor.getString(cursor
+									.getColumnIndex(MediaStore.Images.Media.DATA));
+							Log.d(logger, "determined file path for uri: " + path);
+						}
+						else {
+							path = mediaFileUri.getPath();
+						}
 
-				// set the bitmap on the image view
-				mediaView.setImageBitmap(rotated);
+						// now create the thumbnail using the utility class provided by
+						// android
+						Bitmap bmp = ThumbnailUtils.createVideoThumbnail(path,
+								Thumbnails.MINI_KIND);
+						Log.d(logger, "created thumbnail: " + bmp);
+
+						// rotate the bitmap (see
+						// http://stackoverflow.com/questions/8608734/android-rotate-bitmap-90-degrees-results-in-squashed-image-need-a-true-rotate-b)
+						Matrix matrix = new Matrix();
+						//matrix.postRotate(90);
+						Bitmap rotated = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(),
+								bmp.getHeight(), matrix, true);
+
+						// set the bitmap on the image view
+						mediaView.setImageBitmap(rotated);
+						break;
+					case RESULT_CANCELED:
+						Toast.makeText(this, "Image capture cancelled!",
+								Toast.LENGTH_LONG).show();
+						break;
+					default:
+						Toast.makeText(this, "Image capture failed!", Toast.LENGTH_LONG)
+								.show();
+				}
 				break;
-			case RESULT_CANCELED:
-				Toast.makeText(this, "Image capture cancelled!",
-						Toast.LENGTH_LONG).show();
-				break;
-			default:
-				Toast.makeText(this, "Image capture failed!", Toast.LENGTH_LONG)
-						.show();
-			}
-			break;
 		}
 
 	}
@@ -240,7 +252,7 @@ public class CameraActivity extends Activity {
 				Uri picUri = Uri.parse(fileUrl);
 				Log.d(logger, "got album uri " + picUri + " for image file: "
 						+ imgFileUri);
-				// notify availability of the new image
+				// notify availability of the new image - this does not seem to work anymore as it has been blocked at some moment...
 				sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
 						picUri));
 				Toast.makeText(this, "Successfully saved image: " + fileUrl,
@@ -256,6 +268,9 @@ public class CameraActivity extends Activity {
 		return null;
 	}
 
+	/*
+	 * 160308: this does not work anymore, but there does not seem to exist a clear solution for how to let applications add own video content to the media store
+	 */
 	protected Uri saveVideoInAlbum(Uri videoFileUri) {
 		Log.i(logger, "adding video file to album: " + videoFileUri);
 
@@ -269,15 +284,20 @@ public class CameraActivity extends Activity {
 		Uri videoUri = getContentResolver().insert(
 				MediaStore.Video.Media.EXTERNAL_CONTENT_URI, values);
 
+		Log.i(logger, "using videoUri: " + videoUri);
+
 		// Now get a handle to the file for that record, and save the data into
 		// it.
 		try {
+
 			// get an input stream for the video file
 			ContentResolver cResolver = getContentResolver();
 			InputStream is = cResolver.openInputStream(videoFileUri);
 
 			// and write the data to an output stream for the videoUri
-			OutputStream os = getContentResolver().openOutputStream(videoUri);
+			OutputStream os = cResolver.openOutputStream(videoUri);
+
+			Log.i(logger, "got output stream for video: " + os);
 
 			// now transfer the data...
 			byte[] buffer = new byte[4096];
