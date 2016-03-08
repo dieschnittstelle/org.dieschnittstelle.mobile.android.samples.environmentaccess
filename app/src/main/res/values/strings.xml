@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Adressbuch</string>
+    
+	<string name="optionsmenu_contextmenuAsActionmode">Kontextmenü im Aktionsmodus</string>    
+	<string name="optionsmenu_contextmenuAsDialog">Kontextmenü als Dialog</string>    
+	
+	<string name="contextmenu_deleteEntry">Eintrag %s löschen</string>
+	<string name="contextmenu_editEntry">Eintrag %s editieren</string>
+	
+	 <!-- the main menu items -->
+    <string-array name="main_menu">
+        <item>Contacts</item>
+        <item>Custom Content Provider</item>
+        <item>Camera</item>
+        <item>Communication</item>
+    </string-array>
+
+    <!--  the activities that will be called on menu item selection -->    
+    <string-array name="main_menu_activities">
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.contacts.ContactOverviewActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.mycontentprovider.ContentProviderDataItemOverviewActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.camera.CameraActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.communication.CommunicationActivity</item>
+    </string-array>
+	
+</resources>

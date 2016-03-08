@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/messageReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Empfänger"
+            android:imeOptions="actionNext"
+            android:padding="5dip"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/messageText"
+            android:layout_width="match_parent"
+            android:layout_height="150dip"
+            android:gravity="left|top"
+            android:hint="Botschaft"
+            android:imeOptions="actionDone"
+            android:padding="5dip"
+            android:textSize="12dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="0.1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/composeSMSAction"
+                android:layout_width="match_parent"
+                android:layout_height="55dip"
+                android:layout_weight="0.33"
+                android:text="SMS bearbeiten"
+                android:textSize="10dip" >
+            </Button>
+
+            <Button
+                android:id="@+id/sendSMSAction"
+                android:layout_width="match_parent"
+                android:layout_height="55dip"
+                android:layout_weight="0.33"
+                android:text="SMS versenden"
+                android:textSize="10dip" >
+            </Button>
+
+            <Button
+                android:id="@+id/composeEmailAction"
+                android:layout_width="match_parent"
+                android:layout_height="55dip"
+                android:layout_weight="0.33"
+                android:text="Email bearbeiten"
+                android:textSize="10dip" >
+            </Button>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/placeCallAction"
+            android:layout_width="match_parent"
+            android:layout_height="55dip"
+            android:text="Anrufen"
+            android:textSize="10dip" >
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_menu">
+        <item>Contacts</item>
+        <item>Custom Content Provider</item>
+        <item>Camera</item>
+        <item>Communication</item>
+    </string-array>
+    <string-array name="main_menu_activities">
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.contacts.ContactOverviewActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.mycontentprovider.ContentProviderDataItemOverviewActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.camera.CameraActivity</item>
+        <item>org.dieschnittstelle.mobile.android.environmentaccess.communication.CommunicationActivity</item>
+    </string-array>
+    <string name="app_name">Adressbuch</string>
+    <string name="contextmenu_deleteEntry">Eintrag %s löschen</string>
+    <string name="contextmenu_editEntry">Eintrag %s editieren</string>
+    <string name="optionsmenu_contextmenuAsActionmode">Kontextmenü im Aktionsmodus</string>
+    <string name="optionsmenu_contextmenuAsDialog">Kontextmenü als Dialog</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>
