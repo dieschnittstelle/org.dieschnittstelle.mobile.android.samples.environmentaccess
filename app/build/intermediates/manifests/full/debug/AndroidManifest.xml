@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="19" />
 
     <!--
     we do not need internet access even though the dataitem content provider does 
@@ -32,6 +32,7 @@
     <uses-permission android:name="org.dieschnittstelle.mobile.android.permission.WRITE_DATAITEMS" />
 
     <application
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
