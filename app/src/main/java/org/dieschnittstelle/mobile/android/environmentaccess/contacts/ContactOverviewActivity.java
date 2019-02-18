@@ -8,11 +8,14 @@ import org.dieschnittstelle.mobile.android.environmentaccess.contacts.model.Cont
 import org.dieschnittstelle.mobile.android.environmentaccess.contacts.model.ContactsAccessorImpl;
 import org.dieschnittstelle.mobile.android.environmentaccess.contacts.model.IContactsAccessor;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
@@ -72,6 +75,8 @@ public class ContactOverviewActivity extends Activity {
 	private static final int REQUEST_EDIT_ENTRY = 1;
 	private static final int REQUEST_CREATE_ENTRY = 2;
 
+	private static final int REQUEST_PERMISSIONS = 3;
+
 	/**
 	 * track the action mode (if some is active)
 	 */
@@ -88,6 +93,18 @@ public class ContactOverviewActivity extends Activity {
 		Log.i(logger, "onCreate()...");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addressbookview);
+
+		// we need to check whether we have permissions
+		int hasReadContactsPermissions = checkSelfPermission(Manifest.permission.READ_CONTACTS);
+		if (hasReadContactsPermissions == PackageManager.PERMISSION_GRANTED) {
+			Log.i("Overview","access to contacts permitted!");
+		}
+		else {
+			Log.i("Overview","access to contacts not yet permitted!");
+			requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},REQUEST_PERMISSIONS);
+			return;
+		}
+
 
 		// instantiate the accessor
 		this.accessor = new ContactsAccessorImpl(this.getContentResolver());
@@ -539,5 +556,11 @@ public class ContactOverviewActivity extends Activity {
 			contactsListActionMode = null;
 		}
 	};
+
+	// handle permission result
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+	}
 
 }

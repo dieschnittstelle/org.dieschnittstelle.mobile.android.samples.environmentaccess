@@ -2,6 +2,7 @@ package org.dieschnittstelle.mobile.android.environmentaccess.communication;
 
 import org.dieschnittstelle.mobile.android.environmentaccess.R;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -192,13 +193,13 @@ public class CommunicationActivity extends Activity {
 
 	/**
 	 * pass the content and the recipient to an email sending app
-	 * 
-	 * 
+	 *
+	 *
 	 * @param context
 	 * @param subject
 	 * @param body
 	 * @param sender
-	 * @param recipient
+	 * @param recipients
 	 */
 	// see
 	// http://www.anddev.org/email_send_intent_intentchooser-t3295.html
@@ -232,6 +233,7 @@ public class CommunicationActivity extends Activity {
 	/**
 	 * place a call
 	 */
+	@SuppressLint("MissingPermission")
 	protected void placeCall(String receiver) {
 		String url = "tel:" + receiver;
 		Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));

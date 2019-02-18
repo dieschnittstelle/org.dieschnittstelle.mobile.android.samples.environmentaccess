@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 27
+
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "org.dieschnittstelle.mobile.android.environmentaccess"
-        minSdkVersion 10
-        targetSdkVersion 19
+        minSdkVersion 14
+        targetSdkVersion 27
     }
 
     buildTypes {
@@ -18,5 +20,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.0.0'
+    implementation 'com.android.support:support-v4:27.0.0'
 }

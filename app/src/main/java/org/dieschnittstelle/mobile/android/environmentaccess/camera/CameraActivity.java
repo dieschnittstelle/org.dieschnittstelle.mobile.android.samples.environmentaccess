@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Video.Thumbnails;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,6 +44,11 @@ import android.media.MediaScannerConnection.OnScanCompletedListener;
 public class CameraActivity extends Activity {
 
 	protected static String logger = CameraActivity.class.getSimpleName();
+
+	/* refacored for S19, use a file provider to access images and videos */
+	public static class CameraFileProvider extends FileProvider {
+
+	}
 
 	/*
 	 * constants for the two itents to capture image and video
@@ -84,7 +90,7 @@ public class CameraActivity extends Activity {
 					Intent imageCaptureIntent = new Intent(
 							MediaStore.ACTION_IMAGE_CAPTURE);
 					// we use an image path on the external storage
-					mediaFileUri = Uri.fromFile(new File(
+					mediaFileUri  = FileProvider.getUriForFile(CameraActivity.this, "org.dieschnittstelle.mobile.android.environmentaccess", new File(
 							Environment
 									.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
 							System.currentTimeMillis() + ".jpg"));
@@ -114,7 +120,7 @@ public class CameraActivity extends Activity {
 					Intent imageCaptureIntent = new Intent(
 							MediaStore.ACTION_VIDEO_CAPTURE);
 					// we use an image path on the external storage
-					mediaFileUri = Uri.fromFile(new File(
+					mediaFileUri  = FileProvider.getUriForFile(CameraActivity.this, "org.dieschnittstelle.mobile.android.environmentaccess", new File(
 							Environment
 									.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES),
 							System.currentTimeMillis() + ".mp4"));
@@ -212,11 +218,11 @@ public class CameraActivity extends Activity {
 						mediaView.setImageBitmap(rotated);
 						break;
 					case RESULT_CANCELED:
-						Toast.makeText(this, "Image capture cancelled!",
+						Toast.makeText(this, "Video capture cancelled!",
 								Toast.LENGTH_LONG).show();
 						break;
 					default:
-						Toast.makeText(this, "Image capture failed!", Toast.LENGTH_LONG)
+						Toast.makeText(this, "Video capture failed!", Toast.LENGTH_LONG)
 								.show();
 				}
 				break;

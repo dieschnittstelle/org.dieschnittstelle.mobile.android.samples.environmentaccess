@@ -27,6 +27,8 @@ public class ContactsAccessorImpl implements IContactsAccessor {
 
 	@Override
 	public List<Contact> readAllContacts() {
+		// we add a permissions check here
+
 		// the list of contact objects
 		List<Contact> contactObjs = new ArrayList<Contact>();
 

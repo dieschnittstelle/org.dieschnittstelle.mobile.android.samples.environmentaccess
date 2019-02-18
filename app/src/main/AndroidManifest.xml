@@ -4,10 +4,6 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="17" />
-
     <!--
     we do not need internet access even though the dataitem content provider does 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -73,6 +69,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
+        <!-- declare the file provider, which we use to access images and videos -->
+        <provider
+            android:name=".camera.CameraActivity$CameraFileProvider"
+            android:authorities="org.dieschnittstelle.mobile.android.environmentaccess"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
     </application>
 
 </manifest>
