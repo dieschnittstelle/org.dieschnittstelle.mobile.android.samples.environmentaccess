@@ -96,12 +96,13 @@ public class ContactOverviewActivity extends Activity {
 
 		// we need to check whether we have permissions
 		int hasReadContactsPermissions = checkSelfPermission(Manifest.permission.READ_CONTACTS);
-		if (hasReadContactsPermissions == PackageManager.PERMISSION_GRANTED) {
+		int hasWriteContactsPermissions = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);
+		if (hasWriteContactsPermissions == PackageManager.PERMISSION_GRANTED && hasReadContactsPermissions == PackageManager.PERMISSION_GRANTED) {
 			Log.i("Overview","access to contacts permitted!");
 		}
 		else {
 			Log.i("Overview","access to contacts not yet permitted!");
-			requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},REQUEST_PERMISSIONS);
+			requestPermissions(new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS},REQUEST_PERMISSIONS);
 			return;
 		}
 
