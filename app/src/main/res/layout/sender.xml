@@ -45,12 +45,13 @@
                 android:id="@+id/composeSMSAction"
                 android:layout_width="match_parent"
                 android:layout_height="55dip"
-                android:layout_weight="0.33"
+                android:layout_weight="0.5"
                 android:text="SMS bearbeiten"
                 android:textSize="10dip" >
             </Button>
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/sendSMSAction"
                 android:layout_width="match_parent"
                 android:layout_height="55dip"
@@ -63,13 +64,14 @@
                 android:id="@+id/composeEmailAction"
                 android:layout_width="match_parent"
                 android:layout_height="55dip"
-                android:layout_weight="0.33"
+                android:layout_weight="0.5"
                 android:text="Email bearbeiten"
                 android:textSize="10dip" >
             </Button>
         </LinearLayout>
 
         <Button
+            android:visibility="gone"
             android:id="@+id/placeCallAction"
             android:layout_width="match_parent"
             android:layout_height="55dip"

@@ -13,7 +13,7 @@
     <string-array name="main_menu">
         <item>Contacts</item>
         <item>Custom Content Provider</item>
-        <item>Camera</item>
+<!--        <item>Camera</item>-->
         <item>Communication</item>
     </string-array>
 
@@ -21,7 +21,7 @@
     <string-array name="main_menu_activities">
         <item>org.dieschnittstelle.mobile.android.environmentaccess.contacts.ContactOverviewActivity</item>
         <item>org.dieschnittstelle.mobile.android.environmentaccess.mycontentprovider.ContentProviderDataItemOverviewActivity</item>
-        <item>org.dieschnittstelle.mobile.android.environmentaccess.camera.CameraActivity</item>
+<!--        <item>org.dieschnittstelle.mobile.android.environmentaccess.camera.CameraActivity</item>-->
         <item>org.dieschnittstelle.mobile.android.environmentaccess.communication.CommunicationActivity</item>
     </string-array>
 	
