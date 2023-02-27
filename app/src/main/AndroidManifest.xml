@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.dieschnittstelle.mobile.android.environmentaccess"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <!--
     we do not need internet access even though the dataitem content provider does 
@@ -26,16 +27,19 @@
     <uses-permission android:name="org.dieschnittstelle.mobile.android.permission.READ_DATAITEMS" />
     <uses-permission android:name="org.dieschnittstelle.mobile.android.permission.WRITE_DATAITEMS" />
 
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission"/>
+
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:exported="true"
             android:name=".EnvironmentAccessActivity"
-            android:label="EnvironmentAccess" >      
+            android:label="EnvironmentAccess" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,12 +49,9 @@
             android:label="Custom Content Provider" >
         </activity>
         <activity
+            android:exported="true"
             android:name=".contacts.ContactOverviewActivity"
             android:label="Contacts" >
-        </activity>
-        <activity
-            android:name=".camera.CameraActivity"
-            android:label="Camera" >
         </activity>
         <activity
             android:name="org.dieschnittstelle.mobile.android.environmentaccess.contacts.ContactDetailsViewActivity"
@@ -62,24 +63,16 @@
         </activity>
         
         <!-- the receiver for incoming sms -->    
-		<receiver android:name=".SMSInboundBroadcastReceiver" >
+<!--
+		<receiver android:name=".SMSInboundBroadcastReceiver"
+            android:exported="true">
             <intent-filter >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
-        <!-- declare the file provider, which we use to access images and videos -->
-        <provider
-            android:name=".camera.CameraActivity$CameraFileProvider"
-            android:authorities="org.dieschnittstelle.mobile.android.environmentaccess"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
-        </provider>
+-->
 
     </application>
 

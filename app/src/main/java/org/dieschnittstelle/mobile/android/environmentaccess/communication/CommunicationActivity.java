@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CommunicationActivity extends Activity {
 
@@ -77,9 +78,14 @@ public class CommunicationActivity extends Activity {
 
 		// register a phonestatelistener
 		this.phoneStateListener = new MyPhoneStateListener(this);
-		((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
-				.listen(this.phoneStateListener,
-						PhoneStateListener.LISTEN_CALL_STATE);
+		try {
+			((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
+					.listen(this.phoneStateListener,
+							PhoneStateListener.LISTEN_CALL_STATE);
+		}
+		catch (Exception e) {
+			Toast.makeText(this,"PhoneStateListener is not available",Toast.LENGTH_LONG);
+		}
 
 		// then set onClick listeners on the action buttons
 		findViewById(R.id.sendSMSAction).setOnClickListener(
