@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/org.dieschnittstelle.mobile.android.samples.environmentaccess.iml" filepath="$PROJECT_DIR$/org.dieschnittstelle.mobile.android.samples.environmentaccess.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.unitTest.iml" />
     </modules>
   </component>
 </project>
