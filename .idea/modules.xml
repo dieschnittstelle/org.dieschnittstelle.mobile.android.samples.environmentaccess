@@ -7,11 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.app.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.iml" filepath="$PROJECT_DIR$/.idea/modules/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/org.dieschnittstelle.mobile.android.samples.environmentaccess.local.app.unitTest.iml" />
     </modules>
   </component>
 </project>
