@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    compileSdk 34
 
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "org.dieschnittstelle.mobile.android.environmentaccess"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
         multiDexEnabled true
     }
 
